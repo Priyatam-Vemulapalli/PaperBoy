@@ -1,6 +1,7 @@
 package com.example.paperboy.Controller;
 
 
+import com.example.paperboy.ResponseBody.ArticleResponse;
 import com.example.paperboy.Service.PaperboyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class PaperboyController {
     PaperboyService paperboyService;
 
     @GetMapping("/get")
-    public Object getNews(@RequestParam("countryCode") String countryCode, @RequestParam("apiKey") String apiKey){
+    public ArticleResponse getNews(@RequestParam("countryCode") String countryCode, @RequestParam("apiKey") String apiKey){
         return paperboyService.getNews(countryCode, apiKey);
 
     }

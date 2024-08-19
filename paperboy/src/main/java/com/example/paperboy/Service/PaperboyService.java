@@ -1,6 +1,7 @@
 package com.example.paperboy.Service;
 
 
+import com.example.paperboy.ResponseBody.ArticleResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -13,12 +14,12 @@ public class PaperboyService {
 
     String baseUrl = "https://newsapi.org/v2/top-headlines";
     String topicUrl = "https://newsapi.org/v2/everything";
-    public Object getNews(String countryCode,
-                        String apiKey){
+    public ArticleResponse getNews(String countryCode,
+                                   String apiKey){
         String url = prepareURL(countryCode, apiKey);
-        return restTemplate.getForObject(url,Object.class);
-
+        return restTemplate.getForObject(url,ArticleResponse.class);
     }
+
     public String prepareURL(String countryCode, String apiKey){
 
         String url=baseUrl + "?country=" + countryCode + "&apiKey=" + apiKey;
